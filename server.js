@@ -27,7 +27,10 @@ app.use('/api/workout',workoutRoutes)
 app.use('/api/user',userRoutes)
 
 // connect to db
-mongoose.connect(process.env.Mongo_URI)
+mongoose.connect(process.env.Mongo_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 .then(() => {
   // listen for requests
   app.listen(process.env.PORT, () =>{ 
